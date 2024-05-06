@@ -1,4 +1,5 @@
 
+
 def exp(x, precison):
     """
     Calcula e^x ≅ 1/0! + x¹/1! + x²/2! + x³/3! + x⁴/4! + ...
@@ -22,4 +23,6 @@ def main():
     precision = 10**-5
     print(f"Resultado e^{x} com precisão de {precision}:", exp(x, precision))
 
-main()
+
+if __name__ == "__main__":
+    main()

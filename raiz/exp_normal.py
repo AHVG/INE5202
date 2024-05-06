@@ -1,11 +1,11 @@
 
-def exp(x):
+def exp(x, n):
     """
     Calcula e^x ≅ 1/0! + x¹/1! + x²/2! + x³/3! + x⁴/4!
     """
     acc_x = acc_fat = result = 1.0
 
-    for i in range(1, 5):
+    for i in range(1, n):
         acc_x *= x
         acc_fat *= i
         result += acc_x / acc_fat
@@ -14,6 +14,9 @@ def exp(x):
 
 def main():
     x = 2
-    print(f"Resultado e^{x}:", exp(x))
+    n = 5
+    print(f"Resultado e^{x}:", exp(x, n))
 
-main()
+
+if __name__ == "__main__":
+    main()
