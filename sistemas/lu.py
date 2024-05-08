@@ -30,8 +30,7 @@ def lu(A, B):
 
         for column in range(i + 1, n):
             U[i, column] = (A[i, column] - np.dot(L[i, :], U[:, column])) / L[i, i]
-    
-    # # Inverter L e B
+
     Y = successive_replacement(np.flip(L), np.flip(B))
     X = successive_replacement(U, np.flip(Y))
 
