@@ -1,14 +1,6 @@
 import numpy as np
 
-
-def successive_replacement(A, B):
-    n = len(B)
-    X = np.zeros((n, B.shape[1]), dtype=float)
-
-    for line in range(n - 1, -1, -1):
-        X[line] = (B[line, :] - np.dot(A[line, :], X)) / (A[line, line])
-
-    return X
+from utils import successive_replacement
 
 
 def lu(A, B):
@@ -43,10 +35,7 @@ def main():
     B = np.array([[7.0],
                   [1.0],
                   [-5.0]])
-
-    L, U, Y, X, n = lu(A, B)
-
-    print(X)
+    print(lu(A, B))
 
 if __name__ == "__main__":
     main()

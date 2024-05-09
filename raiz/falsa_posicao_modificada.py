@@ -1,7 +1,7 @@
 import math
 
 
-def falsa_posicao_modificada(func, interval, erro=0.01):
+def falsa_posicao_modificada(func, interval, erro=0.01, max_interactions=10000):
     i = 0
     while True:
         fa = func(interval[0])
@@ -16,17 +16,15 @@ def falsa_posicao_modificada(func, interval, erro=0.01):
             fator = fa / (fa + func(xk))
             interval = (xk, interval[1] * fator)
 
-        print(f"{i}, {xk}, {interval}")
-
-        if abs(func(xk)) < erro:
+        if abs(func(xk)) < erro or i > max_interactions:
             return xk, i
 
         i += 1
 
 def main():
-    result, interation = falsa_posicao_modificada(lambda x: math.exp(x) + x, (-1, 0))
+    result, interactions = falsa_posicao_modificada(lambda x: math.exp(x) + x, (-1, 0))
     print(f"Resultado: {result}")
-    print(f"Interação: {interation}")
+    print(f"Interação: {interactions}")
 
 
 if __name__ == "__main__":

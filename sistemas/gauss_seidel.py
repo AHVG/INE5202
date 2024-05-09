@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def gauss_seidel(A, B, Xo, error=0.001):
+def gauss_seidel(A, B, Xo, error=0.001, max_interactions=10000):
     n = len(B)
     X = np.copy(Xo)
 
@@ -16,7 +16,7 @@ def gauss_seidel(A, B, Xo, error=0.001):
 
         R = np.max(np.array([B[i, 0] - np.dot(X[:, 0], A[i, :]) for i in range(n)]))
 
-        if R < error:
+        if R < error or interaction > max_interactions:
             break
 
     return X
@@ -38,7 +38,6 @@ def main():
         [0.0],
         [0.0]
     ])
-
     print(gauss_seidel(A, B, Xo))
 
 if __name__ == "__main__":
