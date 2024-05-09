@@ -8,13 +8,13 @@ def newton(func, x, interval, erro=0.01, max_interactions=10000):
     i = 0
 
     while True:
+        i += 1
         xk1 = xk - func.subs(x, xk) / der.subs(x, xk)
 
         if func.subs(x, xk1) < erro or i > max_interactions:
             return xk1, i 
 
         xk = xk1
-        i += 1
 
 def main():
     x = symbols('x')

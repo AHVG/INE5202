@@ -7,6 +7,7 @@ def secante(func, interval, erro=0.01, max_interactions=10000):
     i = 0
 
     while True:
+        i += 1
         xk2 = xk1 - ((xk1 - xk) * func(xk1)) / (func(xk1) - func(xk))
 
         if abs(func(xk2)) < erro or i > max_interactions:
@@ -15,7 +16,6 @@ def secante(func, interval, erro=0.01, max_interactions=10000):
         xk = xk1
         xk1 = xk2
 
-        i += 1
 
 def main():
     result, interation = secante(lambda x: math.exp(x) - 2 * math.cos(x), (0, 2))

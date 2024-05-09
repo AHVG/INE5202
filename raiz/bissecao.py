@@ -6,9 +6,9 @@ def bissecao(func, interval, erro=0.01, max_interactions=10000):
 
     # ao inves de usar interval, usar a e b, não?
     while True:
+        i += 1
         fa = func(interval[0])
         fb = func(interval[1])
-
         xm = (interval[0] + interval[1]) / 2.0
 
         if func(xm)*fa < 0:
@@ -18,8 +18,6 @@ def bissecao(func, interval, erro=0.01, max_interactions=10000):
 
         if abs(func(xm)) < erro or i > max_interactions:
             return xm, i
-
-        i += 1
 
 def main():
     result, interactions = bissecao(lambda x: math.exp(x) + 4.0 * x**2.0, (0.5, 1.0), 0.00005)

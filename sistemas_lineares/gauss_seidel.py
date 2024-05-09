@@ -7,20 +7,17 @@ def gauss_seidel(A, B, Xo, error=0.001, max_interactions=10000):
 
     interaction = 0
     while True:
+        interaction += 1
         for i in range(n):
             aux_A = np.delete(A[i, :], i)
             aux_X = np.delete(X, i)
             X[i, 0] = (B[i, 0] - np.dot(aux_X, aux_A)) / A[i,i]
 
-        interaction += 1
 
         R = np.max(np.array([B[i, 0] - np.dot(X[:, 0], A[i, :]) for i in range(n)]))
 
         if R < error or interaction > max_interactions:
-            break
-
-    return X
-
+            return X, interaction
 
 def main():
     A = np.array([
@@ -38,7 +35,9 @@ def main():
         [0.0],
         [0.0]
     ])
-    print(gauss_seidel(A, B, Xo))
+    X, interactions = gauss_seidel(A, B, Xo)
+    print(X)
+    print(interactions)
 
 if __name__ == "__main__":
     main()

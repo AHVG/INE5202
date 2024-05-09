@@ -27,7 +27,10 @@ def main():
     B = np.array([[0.0],
                   [1.0],
                   [0.0]])
-    print(gauss(A, B))
+    A, B, X = gauss(A, B)
+    print(A)
+    print(B)
+    print(X)
 
 if __name__ == "__main__":
     main()

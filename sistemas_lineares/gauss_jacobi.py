@@ -9,14 +9,14 @@ def gauss_jacobi(A, B, Xo, error=0.001, max_interations=10000):
     interaction = 0
 
     while True:
+        interaction += 1
+
         for i in range(n):
             aux_A = np.delete(A[i, :], i)
             aux_X = np.delete(X, i)
             X1[i, 0] = (B[i, 0] - np.dot(aux_X, aux_A)) / A[i,i]
 
         X = np.copy(X1)
-        interaction += 1
-
         R = np.max(np.array([B[i, 0] - np.dot(X[:, 0], A[i, :]) for i in range(n)]))
 
         if R < error or interaction > max_interations:
