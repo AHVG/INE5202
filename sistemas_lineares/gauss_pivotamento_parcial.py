@@ -7,7 +7,7 @@ def gauss_pivotamento_parcial(A, B):
 
     for column in range(A.shape[1] - 1):
 
-        max_index = np.argmax(np.abs(A[:, column]))
+        max_index = np.argmax(np.abs(A[column:, column])) + column
         A[[column, max_index]] = A[[max_index, column]]
         B[[column, max_index]] = B[[max_index, column]]
 
@@ -21,7 +21,7 @@ def gauss_pivotamento_parcial(A, B):
 
     X = successive_replacement(A, B)
 
-    return X
+    return A, B, X
 
 def main():
     A = np.array([
@@ -32,7 +32,10 @@ def main():
     B = np.array([[0.0],
                   [1.0],
                   [0.0]])
-    print(gauss_pivotamento_parcial(A, B))
+    A, B, X = gauss_pivotamento_parcial(A, B)
+    print(A)
+    print(B)
+    print(X)
 
 if __name__ == "__main__":
     main()
