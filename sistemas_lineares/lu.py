@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import linalg
 
 from utils import successive_replacement
 
@@ -26,16 +27,44 @@ def lu(A, B):
     Y = successive_replacement(np.flip(L), np.flip(B))
     X = successive_replacement(U, np.flip(Y))
 
-    return L, U, Y, X, n
+    return L, U, np.flip(Y), X, n
 
 def main():
-    A = np.array([[4.0, 2.0, 3.0],
-                  [2.0, -4.0, -1.0],
-                  [-1.0, 1.0, 4.0]])
-    B = np.array([[7.0],
-                  [1.0],
-                  [-5.0]])
-    print(lu(A, B))
+    A = np.array([[2.0, 3.0, 4.0],
+                  [1.0, 1.0, 1.0],
+                  [4.0, -1.0, 2.0]])
+    B = np.array([[20.0],
+                  [6.0],
+                  [-4.0]])
+    L, U, Y, X, n = lu(A, B)
+    
+    print("A:")
+    print(A)
+    print()
+
+    print("B:")
+    print(B)
+    print()
+
+    print("L:")
+    print(L)
+    print()
+
+    print("U:")
+    print(U)
+    print()
+
+    print("Y:")
+    print(Y)
+    print()
+
+    print("X:")
+    print(X)
+    print()
+
+    print()
+    print(np.dot(L, U))
+    print(np.dot(A, X))
 
 if __name__ == "__main__":
     main()

@@ -16,7 +16,7 @@ def falsa_posicao(func, interval, erro=0.01, max_interactions=10000):
             interval = (xk, interval[1])
 
         if abs(func(xk)) < erro or i > max_interactions:
-            return xk, i
+            return xk, i, func(xk)
 
 def main():
     result, interactions = falsa_posicao(lambda x: math.exp(x) + x, (-1, 0))

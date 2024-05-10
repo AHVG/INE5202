@@ -17,7 +17,7 @@ def bissecao(func, interval, erro=0.01, max_interactions=10000):
             interval = (xm, interval[1])
 
         if abs(func(xm)) < erro or i > max_interactions:
-            return xm, i
+            return xm, i, func(xm)
 
 def main():
     result, interactions = bissecao(lambda x: math.exp(x) + 4.0 * x**2.0, (0.5, 1.0), 0.00005)

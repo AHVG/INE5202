@@ -36,18 +36,33 @@ def gauss_pivotamento_parcial_virtual(A, B):
 
 def main():
     A = np.array([
-        [-0.421, 0.784, 0.279],
-        [0.448, 0.832, 0.193],
-        [0.421, 0.784, -0.207]
+        [2.0, 3.0, -4.0, -5.0],
+        [4.0, -6.0, 1.0, 1.0],
+        [2.0, 1.0, 1.0, 1.0],
+        [4.0, -2.0, -2.0, 2.0],
     ])
-    B = np.array([[0.0],
-                  [1.0],
-                  [0.0]])
-    A, B, O, X = gauss_pivotamento_parcial_virtual(A, B)
-    print(A)
-    print(B)
+    B = np.array([[14.0],
+                  [12.0],
+                  [5.0],
+                  [1.0]])
+    mod_A, mod_B, O, X = gauss_pivotamento_parcial_virtual(np.copy(A), np.copy(B))
+    print("Matriz escalonada:")
+    print(mod_A)
+    print()
+
+    print("Vetor B:")
+    print(mod_B)
+    print()
+
+    print("Vetor ordenamento")
     print(O)
+    print()
+
+    print("Solução (X):")
     print(X)
+    print()
+    
+    print(np.dot(A, X))
 
 if __name__ == "__main__":
     main()
