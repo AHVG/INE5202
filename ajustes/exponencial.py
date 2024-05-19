@@ -3,31 +3,49 @@ import numpy as np
 from polinomial import ajuste_polinomial
 
 
-def ajuste_exponencial(values_table):
+def ajuste_exponencial_professora(values_table):
     Z = np.array([np.log(i) for i in values_table[1, :]], dtype=float)
     C = ajuste_polinomial(np.array([values_table[0, :], Z], dtype=float), 1)
-    Io = np.exp(C[0][0])
-    return Io, C[1][0]
+    a = np.exp(C[0][0])
+    b = C[1][0]
+    return a, b
+
+def ajuste_exponencial_livro(values_table):
+    """
+    Esse método é muito parecido com o da professora só que ele considere b^t e não e^(-x.t)
+    Ou seja, b = e^(x)
+    Livro: http://sergiopeters.prof.ufsc.br/files/2017/02/Ebook_Calculo_numerico_computacional_17mai2022.pdf
+    """
+    a, b = ajuste_exponencial_professora(values_table)
+    b = np.exp(b)
+    return a, b
 
 def main():
     values_table = np.array([[0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8],
                              [3.16, 2.38, 1.75, 1.34, 1.00, 0.74, 0.56]],
                              dtype=float)
-    i, x = ajuste_exponencial(values_table)
+    i, x = ajuste_exponencial_professora(values_table)
     print(i)
     print(x)
 
     values_table = np.array([[0.1, 1.5, 3.3, 4.5, 5.0],
                              [1.77, 2.17, 2.48, 2.99, 3.15]],
                              dtype=float)
-    i, x = ajuste_exponencial(values_table)
+    i, x = ajuste_exponencial_professora(values_table)
     print(i)
     print(x)
 
     values_table = np.array([[-1.0, -0.7, -0.4, -0.1, 0.2, 0.5, 0.8, 1.0],
                              [36.547, 17.264, 8.155, 3.852, 1.82, 0.860, 0.406, 0.246]],
                              dtype=float)
-    i, x = ajuste_exponencial(values_table)
+    i, x = ajuste_exponencial_professora(values_table)
+    print(i)
+    print(x)
+
+    values_table = np.array([[1.0, 3.0, 4.0, 5.0, 6.0],
+                             [2.5, 8.0, 13.0, 22.0, 40.0]],
+                             dtype=float)
+    i, x = ajuste_exponencial_livro(values_table)
     print(i)
     print(x)
 
