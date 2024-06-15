@@ -20,6 +20,23 @@ def interpolacao_diferencas_divididas(values_table):
 
     return P
 
+def interpolacao_diferencas_divididas_poly(values_table):
+    xs = values_table[0, :]
+    ys = values_table[1, :]
+    a = [diferencas_divididas(ys[:i+1], xs[:i+1]) for i in range(len(xs))]
+
+    # Inicializa o polinômio com o termo constante
+    P = np.poly1d([a[0]])
+    for i in range(1, len(a)):
+        # Cria um polinômio (x - xs[0]) * (x - xs[1]) * ... * (x - xs[i-1])
+        term = np.poly1d([1])
+        for j in range(i):
+            term *= np.poly1d([1, -xs[j]])
+        # Adiciona o termo ao polinômio acumulado, multiplicado pelo coeficiente apropriado
+        P += a[i] * term
+
+    return P
+
 if __name__ == "__main__":
     values_table = np.array([[-1.0, 0.0, 2.0],
                              [4.0, 1.0, -1.0]],
@@ -28,3 +45,11 @@ if __name__ == "__main__":
     print(p(-1))
     print(p(0))
     print(p(2))
+
+    values_table = np.array([[2.0, 2.05, 2.1, 2.15],
+                             [0.693, 0.718, 0.742, 0.765]], dtype=float)
+    p = interpolacao_diferencas_divididas_poly(values_table)
+    print(p)
+    print(p(2.0))
+    print(p(2.05))
+    print(p(2.1))
