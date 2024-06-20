@@ -38,7 +38,7 @@ def interpolacao_diferencas_divididas_poly(values_table):
     return P
 
 if __name__ == "__main__":
-    values_table = np.array([[-1.0, 0.0, 2.0],
+    values_table = np.array([[0.1, 0.3, 2.0],
                              [4.0, 1.0, -1.0]],
                             dtype=float)
     p = interpolacao_diferencas_divididas(values_table)
@@ -46,10 +46,8 @@ if __name__ == "__main__":
     print(p(0))
     print(p(2))
 
-    values_table = np.array([[2.0, 2.05, 2.1, 2.15],
-                             [0.693, 0.718, 0.742, 0.765]], dtype=float)
+    values_table = np.array([[0.1, 0.3, 0.5, 0.7],
+                             [0.101, 0.327, 0.625, 1.043]], dtype=float)
     p = interpolacao_diferencas_divididas_poly(values_table)
     print(p)
-    print(p(2.0))
-    print(p(2.05))
-    print(p(2.1))
+    print(p(0.4))

@@ -13,6 +13,7 @@ def ajuste_polinomial(values_table, M=2):
             A[line, column] = np.sum([x**(column + line) for x in values_table[0, :]])
     print(A)
     print(B)
+    # A.X = B
 
     # B primeira linha; A segunda linha B + A.x = g(x)   
     return np.linalg.solve(A, B)

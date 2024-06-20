@@ -45,12 +45,13 @@ def main():
     # print(i)
     # print(x)
 
-    values_table = np.array([[1.0, 3.0, 4.0, 6.0],
-                             [2.5, 13.0, 22.0, 36.0]],
+    values_table = np.array([[3.4, 10.8, 28.8, 54.0, 71.0],
+                             [19.0, 17.0, 13.0, 8.9, 6.9]],
                              dtype=float)
     a, b = ajuste_exponencial_professora(values_table)
     print(a)
     print(b)
+    print(f"{a:.5f}.e^({b:.5f}.x)")
     plot_graph(lambda x: a * np.exp(x * b), values_table[0, :], values_table[1, :])
 
 

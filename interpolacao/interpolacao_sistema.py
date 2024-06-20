@@ -10,14 +10,20 @@ def interpolacao_sistema_linear(values_table):
     for line in range(len(x)):
         A[line, :] = np.array([x[line]**i for i in range(len(x))])
 
+    print("A)")
+    print("Matriz A")
+    print(A)
+    print("\nMatriz B")
+    print(y)
+
     return np.linalg.solve(A, y)
 
 if __name__ == "__main__":
-    values_table = np.array([[2.0, 2.05, 2.1, 2.15],
-                             [0.693, 0.718, 0.742, 0.765]], dtype=float)
+    values_table = np.array([[0.1, 0.3, 0.5, 0.7],
+                             [0.011, 0.117, 0.375, 0.833]], dtype=float)
     
     a = interpolacao_sistema_linear(values_table)
     
     p = np.poly1d(np.flip(a))
-    print(p)
-    print(p(2.14))
+    print(f"\nB)\nPolinómio\n {p}")
+    print(f"\nC)\nResultado {p(0.6)}")
