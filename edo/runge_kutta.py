@@ -44,11 +44,11 @@ def main():
     x, y = RK_quarta_ordem(func, y0, a, b, h)
     func_exata = lambda x: 1.0 / (1.0 + np.exp(x))
     print("A)")
-    print(f"A solução é x={x}, y={y}")
+    print(f"A solução é y={y}")
     
     print("\nB)")
-    erro = max(abs(func_exata(xi) - y[i]) for i, xi in enumerate(x))
-    print(f"O erro é {erro}")
+    erro = [abs(func_exata(xi) - y[i]) for i, xi in enumerate(x)]
+    print(f"O vetor erro é {erro}")
 
 
 if __name__ == "__main__":

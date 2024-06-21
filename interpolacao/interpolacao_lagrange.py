@@ -15,7 +15,7 @@ def interpolacao_lagrange(values_table):
             return result
 
         for term in range(len(xs)):
-            print(f"Termo {term} - {y[term] * L(x, term)}")
+            print(f"L{len(xs)},{term}({x:.5f}) = {L(x, term):.5f}")
 
         return sum(y[term] * L(x, term) for term in range(len(xs)))
     
@@ -83,3 +83,11 @@ if __name__ == "__main__":
     result = p(0.4)
 
     print(f"\nB)\nResultado {result}")
+
+    # values_table = np.array([[0.1, 0.3, 0.5, 0.7],
+    #                         [0.101, 0.327, 0.625, 1.043]], dtype=float)
+    # p = interpolacao_lagrange(values_table)
+    # print("A)")
+    # result = p(0.4)
+
+    # print(f"\nB)\nResultado {result}")

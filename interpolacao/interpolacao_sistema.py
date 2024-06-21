@@ -19,11 +19,11 @@ def interpolacao_sistema_linear(values_table):
     return np.linalg.solve(A, y)
 
 if __name__ == "__main__":
-    values_table = np.array([[0.1, 0.3, 0.5, 0.7],
-                             [0.011, 0.117, 0.375, 0.833]], dtype=float)
+    values_table = np.array([[0, 0.2, 0.4, 0.6],
+                             [0, 0.408, 0.864, 1.416]], dtype=float)
     
     a = interpolacao_sistema_linear(values_table)
     
     p = np.poly1d(np.flip(a))
     print(f"\nB)\nPolinómio\n {p}")
-    print(f"\nC)\nResultado {p(0.6)}")
+    print(f"\nC)\nResultado {p(0.5):.2f}")

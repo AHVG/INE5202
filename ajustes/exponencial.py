@@ -45,8 +45,8 @@ def main():
     # print(i)
     # print(x)
 
-    values_table = np.array([[3.4, 10.8, 28.8, 54.0, 71.0],
-                             [19.0, 17.0, 13.0, 8.9, 6.9]],
+    values_table = np.array([[-4, -2, 1, 2, 5],
+                             [3, 8, 20, 40, 90]],
                              dtype=float)
     a, b = ajuste_exponencial_professora(values_table)
     print(a)
